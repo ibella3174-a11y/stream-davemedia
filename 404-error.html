@@ -1,1 +1,95 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+<div class="error-container">
+  <div class="error-content">
+    <div class="icon-wrapper">
+      <i class="fa-solid fa-cloud main-cloud"></i>
+      <i class="fa-solid fa-circle-exclamation alert-dot"></i>
+    </div>
+    
+    <p class="error-message">There was an error loading your data</p>
+    
+    <button id="retryBtn" class="retry-btn">
+      <i class="fa-solid fa-rotate-right"></i> Try Again
+    </button>
+  </div>
+</div>
+<style>
+  body {
+  margin: 0;
+  background-color: #0b1124; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Arial', sans-serif;
+}
+
+.error-content {
+  text-align: center;
+  color: #ffffff;
+}
+.icon-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 25px;
+}
+
+.main-cloud {
+  font-size: 80px;
+  color: #d1d5db; 
+}
+
+.alert-dot {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  font-size: 24px;
+  color: #8e94a5;
+  background: #0b1124;
+  border-radius: 50%;
+}
+
+.error-message {
+  color: #717b91;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.retry-btn {
+  background: none;
+  border: none;
+  color: #fcc419;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 auto;
+  transition: transform 0.2s ease;
+}
+.retry-btn:active {
+  transform: scale(0.95);
+}
+
+.retry-btn i {
+  font-size: 16px;
+}
+</style>
+<script>
+  document.getElementById('retryBtn').addEventListener('click', function() {
+  const icon = this.querySelector('i');
+    
+  icon.classList.add('fa-spin');
+
+  this.style.opacity = "0.5";
+  this.style.pointerEvents = "none";
+  setTimeout(() => {
+    icon.classList.remove('fa-spin');
+    this.style.opacity = "1";
+    this.style.pointerEvents = "auto";
+    console.log("Data reload triggered!");
+  }, 2000);
+});
+</script>
