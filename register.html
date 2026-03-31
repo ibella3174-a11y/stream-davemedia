@@ -3,233 +3,233 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Stream Registration</title>
+  <title>Stream | Create Account</title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    :root{
-  --bg: #061a18;
-  --card: rgba(10, 40, 38, 0.75);
-  --accent: #4fd1c5;         
-  --accent-dark: #2fb8a6; 
-  --glow: rgba(79, 209, 197, 0.35);
-  --text: #ecfffb;
-  --muted: #9fcfc6;
-  --input-bg: rgba(255,255,255,0.04);
-}
+    :root {
+      --bg: #05070a;
+      --card: #111418;
+      --accent: #4fd1c5;         
+      --text: #ffffff;
+      --text-dim: #94a3b8;
+      --input-bg: rgba(255,255,255,0.03);
+      --border: rgba(255,255,255,0.08);
+      --error: #ff5f5f;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+
     body {
-  margin: 0;
-  padding: 24px;
-  font-family: 'Poppins', sans-serif;
-  background:
-    radial-gradient(circle at top, rgba(79,209,197,0.15), transparent 60%),
-    linear-gradient(135deg, #041412, #0b2f2a);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  color: var(--text);
-}
-
-    .container {
-      background: rgba(0,0,0,0.55);
-      border-radius: 16px;
-      padding: 2rem;
-      max-width: 440px;
-      width: 100%;
-      backdrop-filter: blur(8px);
-    }
-
-    .logo { width: 120px; }
-    .brand-name { color: var(--accent); font-weight: 800; font-size: 1.25rem; }
-
-    label { font-weight: 600; margin-bottom: 6px; display: block; }
-
-    .input-group { margin-bottom: 1rem; position: relative; }
-
-    input {
-      width: 100%;
-      padding: 0.75rem;
-      border-radius: 10px;
-      border: 1px solid rgba(255,255,255,0.05);
-      background: var(--input-bg);
+      background: var(--bg);
       color: var(--text);
-      font-size: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+      background-image: radial-gradient(circle at 50% 0%, rgba(79, 209, 197, 0.1), transparent 50%);
     }
 
-    .toggle-icon {
-      position: absolute;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(255,255,255,0.05);
-      border-radius: 8px;
-      padding: 6px;
-      cursor: pointer;
-    }
-
-    .error-message {
-      color: #ff6d6d;
-      font-size: 0.85rem;
-      display: none;
-      margin-top: 4px;
-    }
-
-    button.primary {
+    .reg-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 40px;
+      max-width: 460px;
       width: 100%;
-      padding: 0.85rem;
-      border-radius: 10px;
-      border: none;
-      background: linear-gradient(90deg,var(--accent),var(--accent-dark));
-      color: #fff;
-      font-weight: 700;
-      cursor: pointer;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
     }
 
-    .note {
-      text-align:center;
-      margin-top: 1rem;
-      font-size: 0.85rem;
-      color: var(--muted);
+    .header { text-align: center; margin-bottom: 30px; }
+    
+    /* YOUR LOGO BACK IN ACTION */
+    .logo { width: 100px; margin-bottom: 15px; filter: drop-shadow(0 0 8px var()); }
+    
+    h2 { font-size: 26px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 5px; }
+    p.subtitle { color: var(--text-dim); font-size: 14px; }
+
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
+    .full-width { grid-column: span 2; }
+
+    label { font-size: 11px; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; display: block; }
+
+    .input-wrapper { position: relative; margin-bottom: 18px; }
+    
+    input, select {
+      width: 100%;
+      padding: 14px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--input-bg);
+      color: #fff;
+      font-size: 15px;
+      transition: all 0.2s ease;
     }
-    .note a:hover {
-  text-decoration: underline;
+
+    /* Error State Styling */
+    input.invalid { border-color: var(--error) !important; background: rgba(255, 95, 95, 0.05); }
+
+    input:focus { border-color: var(--accent); outline: none; background: rgba(255,255,255,0.05); }
+
+    .toggle-pass { position: absolute; right: 14px; top: 36px; color: var(--text-dim); cursor: pointer; }
+
+    .error-msg { color: var(--error); font-size: 11px; font-weight: 600; margin-top: 4px; display: none; }
+
+    /* Plan Visualizer */
+    .plan-badge {
+      background: rgba(79, 209, 197, 0.05);
+      border: 1px solid rgba(79, 209, 197, 0.2);
+      padding: 15px;
+      border-radius: 16px;
+      margin: 10px 0 25px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .plan-info h4 { font-size: 14px; color: var(--accent); }
+    .savings-tag { background: var(--accent); color: #000; font-size: 10px; font-weight: 800; padding: 3px 8px; border-radius: 6px; }
+
+    .btn-submit {
+      width: 100%;
+      padding: 16px;
+      border-radius: 14px;
+      border: none;
+      background: var(--accent);
+      color: #000;
+      font-weight: 800;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .btn-submit:hover { transform: translateY(-2px); opacity: 0.9; }
+
+    .footer-links { text-align: center; margin-top: 25px; font-size: 14px; }
+    .footer-links a { color: var(--accent); text-decoration: none; font-weight: 700; }
   </style>
 </head>
 
 <body>
-  <div class="container">
+  <div class="reg-card">
+    <div class="header">
+      <img src="logo.png" alt="Stream Logo" class="logo">
+      <h2>Create Account</h2>
+     <p class="subtitle">Your journey to financial freedom starts with one click.</p>
+    </div>
 
-    <img src="logo.png" class="logo" />
+    <form id="regForm" novalidate>
+      <div class="form-grid">
+        <div class="input-wrapper full-width">
+          <label>Full Name</label>
+          <input type="text" id="name" placeholder="Enter full name">
+          <div class="error-msg" id="errName"><i class="fa-solid fa-circle-exclamation"></i> Full name is required</div>
+        </div>
 
-    <div class="brand-name"></div>
+        <div class="input-wrapper">
+          <label>Username</label>
+          <input type="text" id="username" placeholder="Choose username">
+          <div class="error-msg" id="errUser"><i class="fa-solid fa-circle-exclamation"></i> Required</div>
+        </div>
 
-    <h2>Create Your Account</h2>
+        <div class="input-wrapper">
+          <label>Phone Number</label>
+          <input type="tel" id="phone" placeholder="08123456789">
+          <div class="error-msg" id="errPhone"><i class="fa-solid fa-circle-exclamation"></i> Invalid phone</div>
+        </div>
 
-    <form id="registrationForm">
+        <div class="input-wrapper full-width">
+          <label>Email Address</label>
+          <input type="email" id="email" placeholder="email@example.com">
+          <div class="error-msg" id="errEmail"><i class="fa-solid fa-circle-exclamation"></i> Valid email required</div>
+        </div>
 
-      <label>Full Name</label>
-      <div class="input-group">
-        <input type="text" id="name" placeholder="Your full name">
-        <div class="error-message" id="errName">Enter your full name</div>
+        <div class="input-wrapper full-width">
+          <label>Password</label>
+          <input type="password" id="password" placeholder="Min. 6 characters">
+          <span class="toggle-pass" id="togglePass"><i class="fa-solid fa-eye-slash"></i></span>
+          <div class="error-msg" id="errPass"><i class="fa-solid fa-circle-exclamation"></i> Password too short</div>
+        </div>
+
+        <div class="input-wrapper full-width">
+          <label>Select Plan</label>
+          <select id="plan">
+            <option value="Standard" data-price="₦12,000" data-save="Save ₦6,000">Stream Standard – ₦12,000</option>
+            <option value="Premium" data-price="₦20,000" data-save="Save ₦9,000" selected>Stream Premium – ₦20,000</option>
+          </select>
+        </div>
       </div>
 
-      <label>Username</label>
-      <div class="input-group">
-        <input type="text" id="username" placeholder="Choose a username">
-        <div class="error-message" id="errUser">Enter a username</div>
+      <div class="plan-badge">
+        <div class="plan-info">
+          <h4 id="plan-name">Stream Premium</h4>
+          <p id="plan-price" style="font-size: 12px; color: var(--text-dim);">₦20,000 One-time</p>
+        </div>
+        <div class="savings-tag" id="plan-save">Save ₦9,000</div>
       </div>
 
-      <label>Phone Number</label>
-      <div class="input-group">
-        <input type="text" id="phone" placeholder="08012345678">
-        <div class="error-message" id="errPhone">Enter a valid phone number</div>
-      </div>
-
-      <label>Email Address</label>
-      <div class="input-group">
-        <input type="email" id="email" placeholder="you@email.com">
-        <div class="error-message" id="errEmail">Enter a valid email</div>
-      </div>
-
-      <label>Password</label>
-      <div class="input-group">
-        <input type="password" id="password" placeholder="Create a password">
-        <div class="toggle-icon" id="togglePass"><i class="fa-solid fa-eye-slash"></i></div>
-        <div class="error-message" id="errPass">Password must be 6+ characters</div>
-      </div>
-      
-      <label for="plan">Select Plan</label>
-<div class="input-group">
-  <select id="plan" style="width: 100%;
-      padding: 0.75rem;
-      border-radius: 10px;
-      border: 1px solid rgba(255,255,255,0.05);
-      background: var(--input-bg);
-      color: var(--text);
-      font-size: 1rem;
-    ">
-    <option value="12000">Stream Premium  – ₦12,000</option>
-  </select>
-</div>
-
-<div class="plan" style="
-    background: linear-gradient(180deg, rgba(71,163,231,0.03), rgba(71,163,231,0.01));
-    border-radius: 10px;
-    padding: 0.9rem;
-    margin-top: 0.5rem;
-    border: 1px solid rgba(71,163,231,0.06);
-">
-  <h3 style="margin:0; color:#fff; font-size:1rem;">Premium Plan – ₦12,000</h3>
-  <p style="margin:0.5rem 0 0; font-size:0.9rem; color:var(--muted);">
-    <del>₦15,000</del>
-    <span style="color:#47a3e7; font-weight:600;"> &nbsp; Save ₦3,000</span>
-  </p>
-</div>
-
-      <button type="submit" class="primary">Sign Up</button>
-
+      <button type="submit" class="btn-submit">Sign Up</button>
     </form>
                                 
-    <div class="note">Secure registration | Secure payment</div>
-  
-<div class="note" style="margin-top: 1.2rem;">
-  Already have an account?
-  <a href="login.html" style="
-    color: var(--accent);
-    font-weight: 600;
-    text-decoration: none;">
-    Login
-  </a>
-</div>
+    <div class="footer-links">
+        <p style="font-size: 11px; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;">
+        <i class="fa-solid fa-lock" style="color: var(--accent);"></i> Secure Registration | Secure Payment
+      </p>
+      Already have an account? <a href="login.html">Login</a>
+    </div>
   </div>
+
 <script>
-  // password toggle
+  const planSelect = document.getElementById("plan");
+  planSelect.onchange = function() {
+    const opt = this.options[this.selectedIndex];
+    document.getElementById("plan-name").innerText = "Stream " + this.value;
+    document.getElementById("plan-price").innerText = opt.getAttribute("data-price") + " One-time";
+    document.getElementById("plan-save").innerText = opt.getAttribute("data-save");
+  };
   document.getElementById("togglePass").onclick = function() {
-    const input = document.getElementById("password");
+    const pInput = document.getElementById("password");
     const icon = this.querySelector("i");
-    if (input.type === "password") {
-      input.type = "text";
-      icon.classList.replace("fa-eye-slash","fa-eye");
-    } else {
-      input.type = "password";
-      icon.classList.replace("fa-eye","fa-eye-slash");
+    pInput.type = pInput.type === "password" ? "text" : "password";
+    icon.classList.toggle("fa-eye");
+    icon.classList.toggle("fa-eye-slash");
+  };
+  document.getElementById("regForm").onsubmit = function(e) {
+    e.preventDefault();
+    let isFormValid = true;
+
+    const inputs = [
+      { id: "name", err: "errName", check: (v) => v.length > 2 },
+      { id: "username", err: "errUser", check: (v) => v.length > 2 },
+      { id: "phone", err: "errPhone", check: (v) => v.length >= 10 },
+      { id: "email", err: "errEmail", check: (v) => v.includes("@") && v.includes(".") },
+      { id: "password", err: "errPass", check: (v) => v.length >= 6 }
+    ];
+
+    inputs.forEach(inputObj => {
+      const element = document.getElementById(inputObj.id);
+      const errorLabel = document.getElementById(inputObj.err);
+      
+      if (!inputObj.check(element.value.trim())) {
+        element.classList.add("invalid");
+        errorLabel.style.display = "block";
+        isFormValid = false;
+      } else {
+        element.classList.remove("invalid");
+        errorLabel.style.display = "none";
+      }
+    });
+
+    if (isFormValid) {
+      const user = document.getElementById("username").value.trim();
+      const plan = document.getElementById("plan").value;
+      
+      localStorage.setItem("userFullName", document.getElementById("name").value);
+      
+      window.location.href = `Dashboard.html`;
     }
   };
-  document.getElementById("registrationForm").onsubmit = function(e) {
-    e.preventDefault();
-
-    let name = document.getElementById("name").value.trim();
-    let user = document.getElementById("username").value.trim();
-    let phone = document.getElementById("phone").value.trim();
-    let email = document.getElementById("email").value.trim();
-    let pass = document.getElementById("password").value.trim();
-
-    let valid = true;
-
-    if (!name) { document.getElementById("errName").style.display = "block"; valid=false; }
-    else document.getElementById("errName").style.display = "none";
-
-    if (!user) { document.getElementById("errUser").style.display = "block"; valid=false; }
-    else document.getElementById("errUser").style.display = "none";
-
-    if (!phone || phone.length < 10) { document.getElementById("errPhone").style.display = "block"; valid=false; }
-    else document.getElementById("errPhone").style.display = "none";
-
-    if (!email.includes("@")) { document.getElementById("errEmail").style.display = "block"; valid=false; }
-    else document.getElementById("errEmail").style.display = "none";
-
-    if (pass.length < 6) { document.getElementById("errPass").style.display = "block"; valid=false; }
-    else document.getElementById("errPass").style.display = "none";
-
-if (!valid) return;
-localStorage.setItem("userFullName", name);
-window.location.href = "Dashboard.html";
-  }
-  let plan = document.getElementById("plan").value;
 </script>
-
 </body>
-
 </html>
